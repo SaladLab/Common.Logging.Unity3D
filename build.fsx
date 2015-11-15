@@ -7,7 +7,7 @@ open System.IO
 
 // ---------------------------------------------------------------------------- Variables
 
-let buildSolutionFile = "./src/Common.Logging.sln"
+let buildSolutionFile = "./Common.Logging.Unity3D.sln"
 let buildConfiguration = "Release"
 let binDir = "bin"
 
@@ -30,8 +30,8 @@ Target "Build" (fun _ ->
     !! buildSolutionFile
     |> MSBuild "" "Rebuild" [ "Configuration", buildConfiguration ]
     |> Log "Build-Output: "
-    Unity (Path.GetFullPath "src/Sample") "-executeMethod PackageBuilder.BuildPackage"
-    (!! "src/Sample/*.unitypackage") |> Seq.iter (fun p -> MoveFile binDir p)
+    Unity (Path.GetFullPath "src/UnityPackage") "-executeMethod PackageBuilder.BuildPackage"
+    (!! "src/UnityPackage/*.unitypackage") |> Seq.iter (fun p -> MoveFile binDir p)
 )
 
 Target "Help" (fun _ ->  

@@ -33,7 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Common.Logging.Core, Version=3.3.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
-      <HintPath>..\packages\Common.Logging.Core.3.3.1\lib\net35\Common.Logging.Core.dll</HintPath>
+      <HintPath>..\..\packages\Common.Logging.Core.3.3.1\lib\net35\Common.Logging.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -59,12 +59,12 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>$(SolutionDir)..\tools\unity3d\pdb2mdb.exe $(TargetDir)Common.Logging.dll
-$(SolutionDir)..\tools\unity3d\pdb2mdb.exe $(TargetDir)Common.Logging.Core.dll
-$(SolutionDir)..\tools\unity3d\pdb2mdb.exe $(TargetDir)Common.Logging.Extension.dll
-COPY /Y $(TargetDir)Common.Logging.dll* $(SolutionDir)\Sample\Assets\Middleware\CommonLogging
-COPY /Y $(TargetDir)Common.Logging.Core.dll* $(SolutionDir)\Sample\Assets\Middleware\CommonLogging
-COPY /Y $(TargetDir)Common.Logging.Extension.dll* $(SolutionDir)\Sample\Assets\Middleware\CommonLogging</PostBuildEvent>
+    <PostBuildEvent>$(SolutionDir)tools\unity3d\pdb2mdb.exe $(TargetDir)Common.Logging.dll
+$(SolutionDir)tools\unity3d\pdb2mdb.exe $(TargetDir)Common.Logging.Core.dll
+$(SolutionDir)tools\unity3d\pdb2mdb.exe $(TargetDir)Common.Logging.Extension.dll
+COPY /Y $(TargetDir)Common.Logging.dll* $(SolutionDir)src\UnityPackage\Assets\Middleware\CommonLogging
+COPY /Y $(TargetDir)Common.Logging.Core.dll* $(SolutionDir)src\UnityPackage\Assets\Middleware\CommonLogging
+COPY /Y $(TargetDir)Common.Logging.Extension.dll* $(SolutionDir)src\UnityPackage\Assets\Middleware\CommonLogging</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

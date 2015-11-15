@@ -1,9 +1,8 @@
 using UnityEditor;
-using UnityEngine;
 
 public static class PackageBuilder
 {
-    [MenuItem("Assets/BuildPackage")]
+    [MenuItem("Assets/Build UnityPackage")]
     public static void BuildPackage()
     {
         var assetPaths = new string[]
