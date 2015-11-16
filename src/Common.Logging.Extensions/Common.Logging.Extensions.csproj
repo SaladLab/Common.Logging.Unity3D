@@ -61,10 +61,10 @@
   <PropertyGroup>
     <PostBuildEvent>$(SolutionDir)tools\unity3d\pdb2mdb.exe $(TargetDir)Common.Logging.dll
 $(SolutionDir)tools\unity3d\pdb2mdb.exe $(TargetDir)Common.Logging.Core.dll
-$(SolutionDir)tools\unity3d\pdb2mdb.exe $(TargetDir)Common.Logging.Extension.dll
+$(SolutionDir)tools\unity3d\pdb2mdb.exe $(TargetDir)Common.Logging.Extensions.dll
 COPY /Y $(TargetDir)Common.Logging.dll* $(SolutionDir)src\UnityPackage\Assets\Middlewares\CommonLogging
 COPY /Y $(TargetDir)Common.Logging.Core.dll* $(SolutionDir)src\UnityPackage\Assets\Middlewares\CommonLogging
-COPY /Y $(TargetDir)Common.Logging.Extension.dll* $(SolutionDir)src\UnityPackage\Assets\Middlewares\CommonLogging</PostBuildEvent>
+COPY /Y $(TargetDir)Common.Logging.Extensions.dll* $(SolutionDir)src\UnityPackage\Assets\Middlewares\CommonLogging</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
