@@ -7,8 +7,8 @@ public static class PackageBuilder
     {
         var assetPaths = new string[]
         {
-            "Assets/Middleware/CommonLogging",
-            "Assets/Middleware/CommonLoggingSample",
+            "Assets/Middlewares/CommonLogging",
+            "Assets/Middlewares/CommonLoggingSample",
         };
 
         var packagePath = "Common-Logging-Unity3D.unitypackage";

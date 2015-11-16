@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Common</RootNamespace>
-    <AssemblyName>Common.Logging.Extension</AssemblyName>
+    <AssemblyName>Common.Logging.Extensions</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile>
@@ -45,7 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Logging\Extension\Class1.cs" />
+    <Compile Include="Logging\Extensions\Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -62,9 +62,9 @@
     <PostBuildEvent>$(SolutionDir)tools\unity3d\pdb2mdb.exe $(TargetDir)Common.Logging.dll
 $(SolutionDir)tools\unity3d\pdb2mdb.exe $(TargetDir)Common.Logging.Core.dll
 $(SolutionDir)tools\unity3d\pdb2mdb.exe $(TargetDir)Common.Logging.Extension.dll
-COPY /Y $(TargetDir)Common.Logging.dll* $(SolutionDir)src\UnityPackage\Assets\Middleware\CommonLogging
-COPY /Y $(TargetDir)Common.Logging.Core.dll* $(SolutionDir)src\UnityPackage\Assets\Middleware\CommonLogging
-COPY /Y $(TargetDir)Common.Logging.Extension.dll* $(SolutionDir)src\UnityPackage\Assets\Middleware\CommonLogging</PostBuildEvent>
+COPY /Y $(TargetDir)Common.Logging.dll* $(SolutionDir)src\UnityPackage\Assets\Middlewares\CommonLogging
+COPY /Y $(TargetDir)Common.Logging.Core.dll* $(SolutionDir)src\UnityPackage\Assets\Middlewares\CommonLogging
+COPY /Y $(TargetDir)Common.Logging.Extension.dll* $(SolutionDir)src\UnityPackage\Assets\Middlewares\CommonLogging</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
