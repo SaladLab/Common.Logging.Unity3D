@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Logging.Unity3D", "src\Common.Logging.Unity3D\Common.Logging.Unity3D.csproj", "{323DD406-B555-4A1E-8D4D-FF7A1DEEC6C2}"
 EndProject
@@ -17,6 +17,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sample", "Sample", "{DF1067A5-1EC0-40C0-8568-F5465FCE5D7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleLibrary", "sample\SampleLibrary\SampleLibrary.csproj", "{77C35271-D6F7-4FC1-BB0B-C0C0F4417F20}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +35,10 @@ Global
 		{6D8D9CBA-F9E0-4229-86B1-C08033A225F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D8D9CBA-F9E0-4229-86B1-C08033A225F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D8D9CBA-F9E0-4229-86B1-C08033A225F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77C35271-D6F7-4FC1-BB0B-C0C0F4417F20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77C35271-D6F7-4FC1-BB0B-C0C0F4417F20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77C35271-D6F7-4FC1-BB0B-C0C0F4417F20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77C35271-D6F7-4FC1-BB0B-C0C0F4417F20}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -38,5 +46,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{323DD406-B555-4A1E-8D4D-FF7A1DEEC6C2} = {A63D017D-FC5F-4E46-BD0C-18E9B9ED7F93}
 		{6D8D9CBA-F9E0-4229-86B1-C08033A225F1} = {F42CA8D2-ACF0-4FA6-9CFF-F197461DD86E}
+		{77C35271-D6F7-4FC1-BB0B-C0C0F4417F20} = {DF1067A5-1EC0-40C0-8568-F5465FCE5D7E}
 	EndGlobalSection
 EndGlobal
