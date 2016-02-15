@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 using SampleLibrary;
-using System;
+using LumberjackClient;
 
 public class MainScene : MonoBehaviour
 {
@@ -9,10 +10,20 @@ public class MainScene : MonoBehaviour
 
     private int _lastLogId;
 
-    void Start()
+    void OnEnable()
     {
         LogMemoryStorage.Instance.Install();
-        Log("Welcome to Sample");
+    }
+
+    void OnDisable()
+    {
+        LogMemoryStorage.Instance.Uninstall();
+        LogstashForwarder.Instance.Uninstall();
+    }
+
+    void Start()
+    {
+        Log("Welcome to Sample!");
     }
 
     void Log(string text)
@@ -42,5 +53,27 @@ public class MainScene : MonoBehaviour
         var logs = LogMemoryStorage.Instance.GetLogs(ref _lastLogId);
         var count = (logs != null) ? logs.Count : 0;
         Log("# of SavedLog after last report: " + count);
+    }
+
+    public void OnLogstashButtonClick()
+    {
+        if (LogstashForwarder.Instance.Installed)
+        {
+            LogstashForwarder.Instance.Uninstall();
+            Log("Logstash uninstalled.");
+        }
+        else
+        {
+            LogstashForwarder.Instance.ClientSettings = new LumberjackClientSettings
+            {
+                Host = "localhost",
+                Port = 5000,
+                SendConfirm = LumberjackClientSettings.SendConfirmPolicy.Receive,
+                SendFull = LumberjackClientSettings.SendFullPolicy.Drop
+            };
+            LogstashForwarder.Instance.ParseFilterEnabled = true;
+            LogstashForwarder.Instance.Install();
+            Log("Logstash installed.");
+        }
     }
 }
