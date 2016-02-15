@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using SampleLibrary;
 using LumberjackClient;
+using System.Collections.Generic;
 
 public class MainScene : MonoBehaviour
 {
@@ -72,6 +73,13 @@ public class MainScene : MonoBehaviour
                 SendFull = LumberjackClientSettings.SendFullPolicy.Drop
             };
             LogstashForwarder.Instance.ParseFilterEnabled = true;
+            LogstashForwarder.Instance.Fields = new List<KeyValuePair<string, string>>
+            {
+                new KeyValuePair<string, string>("app", "sample"),
+                new KeyValuePair<string, string>("appversion", "1.0"),
+                new KeyValuePair<string, string>("deviceid", SystemInfo.deviceUniqueIdentifier),
+                new KeyValuePair<string, string>("devicemodel", SystemInfo.deviceModel)
+            };
             LogstashForwarder.Instance.Install();
             Log("Logstash installed.");
         }

@@ -19,7 +19,6 @@ public class LogstashForwarder
     private bool _installed;
     private LumberjackClient.LumberjackClient _client;
     private LumberjackClient.LumberjackClientSettings _clientSettings;
-    private bool _parseFilterEnabled;
 
     public bool Installed
     {
@@ -32,11 +31,8 @@ public class LogstashForwarder
         set { _clientSettings = value; }
     }
 
-    public bool ParseFilterEnabled
-    {
-        get { return _parseFilterEnabled; }
-        set { _parseFilterEnabled = value; }
-    }
+    public bool ParseFilterEnabled { get; set; }
+    public List<KeyValuePair<string, string>> Fields { get; set; }
 
     public LogstashForwarder(LumberjackClient.LumberjackClientSettings clientSettings = null)
     {
@@ -66,7 +62,7 @@ public class LogstashForwarder
 
     private void OnLogMessageReceive(string condition, string stacktrace, LogType type)
     {
-        if (_parseFilterEnabled == false)
+        if (ParseFilterEnabled == false)
         {
             var kvs = new List<KeyValuePair<string, string>>()
             {
@@ -75,6 +71,10 @@ public class LogstashForwarder
                 new KeyValuePair<string, string>("message", condition),
                 new KeyValuePair<string, string>("stacktrace", stacktrace)
             };
+
+            if (Fields != null)
+                kvs.AddRange(Fields);
+
             _client.Send(kvs);
         }
         else
@@ -93,6 +93,9 @@ public class LogstashForwarder
 
             if (exception != null)
                 kvs.Add(new KeyValuePair<string, string>("exception", exception));
+
+            if (Fields != null)
+                kvs.AddRange(Fields);
 
             _client.Send(kvs);
         }
