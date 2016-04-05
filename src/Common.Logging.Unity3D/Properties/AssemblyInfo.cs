@@ -9,9 +9,9 @@ using Common.Logging;
 [assembly: AssemblyTitle("Common.Logging for Unity3D")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Saladbowl Creative")]
+[assembly: AssemblyCompany("SaladLab")]
 [assembly: AssemblyProduct("Common Logging Framework")]
-[assembly: AssemblyCopyright("Copyright © Saladbowl Creative 2015")]
+[assembly: AssemblyCopyright("Copyright © 2016 SaladLab")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

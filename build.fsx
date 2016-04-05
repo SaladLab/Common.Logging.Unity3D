@@ -1,58 +1,33 @@
 ﻿#I @"packages/FAKE/tools"
+#I @"packages/FAKE.BuildLib/lib/net451"
 #r "FakeLib.dll"
+#r "BuildLib.dll"
 
 open Fake
-open Fake.FileHelper
-open System.IO
+open BuildLib
 
-// ---------------------------------------------------------------------------- Variables
+let solution = 
+    initSolution
+        "./Common.Logging.Unity3D.sln" "Release" 
+        [ ]
 
-let buildSolutionFile = "./Common.Logging.Unity3D.sln"
-let buildConfiguration = "Release"
-let binDir = "bin"
 
-// ------------------------------------------------------------------------- Unity Helper
+Target "Clean" <| fun _ -> cleanBin 
 
-let UnityPath = 
-    @"C:\Program Files\Unity\Editor\Unity.exe" 
+Target "Restore" <| fun _ -> restoreNugetPackages solution
 
-let Unity projectPath args = 
-    let result = Shell.Exec(UnityPath, "-quit -batchmode -logFile -projectPath \"" + projectPath + "\" " + args) 
-    if result < 0 then failwithf "Unity exited with error %d" result 
+Target "Build" <| fun _ -> buildSolution solution
 
-// ------------------------------------------------------------------------------ Targets
+Target "Package" <| fun _ -> buildUnityPackage "./src/UnityPackage"
 
-Target "Clean" (fun _ -> 
-    CleanDirs [binDir]
-)
+Target "Help" <| fun _ -> 
+    showUsage solution (fun name -> 
+        if name = "package" then Some("Build package", "")
+        else None)
 
-Target "Build" (fun _ ->
-    !! buildSolutionFile
-    |> MSBuild "" "Rebuild" [ "Configuration", buildConfiguration ]
-    |> Log "Build-Output: "
-)
-
-Target "Package" (fun _ ->  
-    Unity (Path.GetFullPath "src/UnityPackage") "-executeMethod PackageBuilder.BuildPackage"
-    (!! "src/UnityPackage/*.unitypackage") |> Seq.iter (fun p -> MoveFile binDir p)
-)
-
-Target "Help" (fun _ ->  
-    List.iter printfn [
-      "usage:"
-      "build [target]"
-      ""
-      " Targets for building:"
-      " * Build        Build"
-      " * Package      Build UnityPackage"
-      ""]
-)
-
-// --------------------------------------------------------------------------- Dependency
-
-// Build order
 "Clean"
+  ==> "Restore"
   ==> "Build"
   ==> "Package"
 
-RunTargetOrDefault "Package"
+RunTargetOrDefault "Help"
