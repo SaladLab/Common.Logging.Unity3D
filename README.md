@@ -7,7 +7,7 @@ This library is for Unity3D and you can use Common.Logging.NET in Unity3D.
 
 ## Where can I get it?
 
-Visit [Release](https://github.com/SaladbowlCreative/Common.Logging.Unity3D/releases)
+Visit [Release](https://github.com/SaladLab/Common.Logging.Unity3D/releases)
 page to get latest Common Logging for Unity3D unity-package.
 
 ## What's the deal?
