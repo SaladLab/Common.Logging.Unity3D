@@ -22,3 +22,7 @@ sysinfo.txt
 
 # UnityPackage
 *.unitypackage
+
+# Artifacts generated on build
+Assets/Artifacts/*
+

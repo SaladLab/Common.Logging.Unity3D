@@ -11,23 +11,29 @@ let solution =
         "./Common.Logging.Unity3D.sln" "Release" 
         [ ]
 
-
 Target "Clean" <| fun _ -> cleanBin 
 
 Target "Restore" <| fun _ -> restoreNugetPackages solution
 
 Target "Build" <| fun _ -> buildSolution solution
 
-Target "Package" <| fun _ -> buildUnityPackage "./src/UnityPackage"
+Target "PackUnity" <| fun _ ->
+    packUnityPackage "./src/UnityPackage/CommonLogging.unitypackage.json"
 
-Target "Help" <| fun _ -> 
-    showUsage solution (fun name -> 
-        if name = "package" then Some("Build package", "")
-        else None)
+Target "Pack" <| fun _ -> ()
+
+Target "CI" <| fun _ -> ()
+
+Target "Help" <| fun _ ->
+    showUsage solution (fun _ -> None)
 
 "Clean"
   ==> "Restore"
   ==> "Build"
-  ==> "Package"
+
+"Build" ==> "PackUnity"
+"PackUnity" ==> "Pack"
+
+"Pack" ==> "CI"
 
 RunTargetOrDefault "Help"
